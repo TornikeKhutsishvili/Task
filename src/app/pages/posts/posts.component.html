@@ -1,0 +1,82 @@
+<section id="posts-section">
+  <h2 class="title">Posts</h2>
+
+  @if (loading()) {
+    <p class="small">Loading...</p>
+  } @else {
+
+    <div class="table-wrapper">
+      <table class="table" role="table">
+
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Post title</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (post of posts(); track post.id) {
+            <tr>
+              <td>{{ getUserName(post.userId) }}</td>
+              <td>{{ post.title }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-outline-info"
+                  title="View posts for {{ post.title }}"
+                  (click)="openDetail(post)"
+                >
+                  Details
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+  }
+
+  <!-- modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            {{ selectedPost()?.title }}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="closeModal()"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <p style="white-space: pre-wrap;">{{ selectedPost()?.body }}</p>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

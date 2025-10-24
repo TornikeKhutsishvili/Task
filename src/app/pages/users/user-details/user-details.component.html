@@ -1,0 +1,20 @@
+<section id="posts-section">
+
+  <h2 class="title">All Posts of {{ getUserName(userId()!) }}</h2>
+
+  <div class="posts-section-main">
+    @if (filteredPosts().length === 0) {
+      <p class="small">Posts not found.</p>
+    } @else {
+
+      @for (p of filteredPosts(); track p.id) {
+        <div class="card" role="article">
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.body }}</p>
+        </div>
+      }
+
+    }
+  </div>
+
+</section>

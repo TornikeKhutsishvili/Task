@@ -1,0 +1,84 @@
+@use '../../../scss-components/variables' as vars;
+@use '../../../scss-components/mixins' as mix;
+@use '../../../scss-components/breakpoints' as resp;
+
+.leaderboard {
+  padding: 32px;
+  background: vars.$bg-light;
+  border-radius: vars.$border-radius * 1.5;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  margin: 0 auto;
+
+  @include resp.respond("xs-lg") {
+    padding: 0px;
+  }
+
+  .title {
+    font-size: vars.$font-size-base * 1.75;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: vars.$margin-ten * 1.6;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: vars.$margin-ten * 1.6;
+
+    button {
+      padding: vars.$padding-ten * 0.8 vars.$padding-ten * 1.6;
+      border: 1px solid vars.$gray;
+      border-radius: vars.$border-radius * 0.75;
+      background: vars.$bg-light;
+      transition: all 0.2s;
+      cursor: pointer;
+
+      &.active {
+        background: vars.$accent;
+        color: vars.$color-white;
+        border-color: vars.$accent;
+      }
+
+      &:hover:not(.active) {
+        background: vars.$bg-light;
+      }
+    }
+  }
+
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: vars.$padding-ten * 1.3 vars.$padding-ten * 1.6;
+      text-align: left;
+      border-bottom: 1px solid vars.$gray;
+    }
+
+    th {
+      background: vars.$bg-light;
+      font-weight: 600;
+    }
+
+    tbody tr:nth-child(even) {
+      background: vars.$bg-white;
+    }
+
+    tbody tr:hover {
+      background: vars.$bg-light;
+    }
+
+    .rank {
+      width: 70px;
+      text-align: center;
+      font-weight: 500;
+      color: vars.$text-muted;
+    }
+
+    .player {
+      font-weight: 500;
+    }
+  }
+
+}

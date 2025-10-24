@@ -1,0 +1,12 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/breakpoints' as resp;
+
+.navbar {
+  @include mix.flex(row, center, center, 20px, wrap);
+  margin: 0 auto;
+
+  .nav-item.active::after {
+    outline: vars.$focus-outline;
+  }
+}

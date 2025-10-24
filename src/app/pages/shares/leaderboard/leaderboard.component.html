@@ -1,0 +1,40 @@
+<section class="leaderboard">
+  <h2 class="title">
+    <i class="fa-solid fa-trophy"></i> Leaderboard
+  </h2>
+
+  <!-- Filter Buttons -->
+  <div class="filters">
+    @for (week of filters; track $index) {
+      <button
+        type="button"
+        [class.active]="isActive(week)"
+        (click)="setFilter(week)"
+      >
+        {{ week }}
+      </button>
+    }
+  </div>
+
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th class="rank">#</th>
+        <th>Player</th>
+        <th>Place</th>
+        <th>Week</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (entry of filteredData(); track $index) {
+        <tr>
+          <td class="rank">{{ entry.place }}</td>
+          <td class="player">{{ entry.loginName }}</td>
+          <td class="place">{{ entry.place }}</td>
+          <td>{{ entry.week }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+</section>

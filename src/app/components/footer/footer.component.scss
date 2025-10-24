@@ -1,0 +1,7 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/breakpoints' as resp;
+
+footer {
+  @include mix.flex-center;
+}

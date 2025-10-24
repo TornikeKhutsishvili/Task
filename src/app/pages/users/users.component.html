@@ -1,0 +1,65 @@
+<section id="users-section">
+  <h2 class="title">Users List</h2>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by name, username or email..."
+      [value]="searchService.searchQuery()"
+      (input)="onSearch($event)"
+    />
+  </div>
+
+  @if (loading()) {
+    <p class="small">Loading...</p>
+  } @else if (filteredUsers().length === 0) {
+    <p class="small">No users found.</p>
+  } @else {
+    <div class="table-wrapper">
+      <table class="table" role="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (user of filteredUsers(); track user.id) {
+            <tr>
+              <td>{{ user.name }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.company.name }}</td>
+              <td class="action-buttons">
+                <button
+                  type="button"
+                  class="btn btn-outline-info"
+                  (click)="goToPosts(user.id)"
+                  title="View posts for {{ user.name }}"
+                >
+                  Posts
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  (click)="goToTodos(user.id)"
+                  title="View todos for {{ user.name }}"
+                >
+                  Todos
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

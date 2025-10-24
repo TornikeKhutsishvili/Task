@@ -1,0 +1,40 @@
+@use './variables' as vars;
+
+
+@mixin flex(
+  $flex-direction: row,
+  $justify-content: center,
+  $align-items: center,
+  $gap: 0,
+  $wrap: wrap
+) {
+
+  display: flex;
+
+  @if $flex-direction != null {
+    flex-direction: $flex-direction;
+  }
+  @if $justify-content != null {
+    justify-content: $justify-content;
+  }
+  @if $align-items != null {
+    align-items: $align-items;
+  }
+  @if $gap != null {
+    gap: $gap;
+  }
+  @if $wrap != null {
+    flex-wrap: $wrap;
+  }
+
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($props...) {
+  transition: $props vars.$transition-duration vars.$transition-ease;
+}

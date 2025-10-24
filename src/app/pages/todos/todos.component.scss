@@ -1,0 +1,37 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/breakpoints' as resp;
+
+#todos-section {
+  width: 80%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: vars.$padding-ten * 3.2;
+  font-family: vars.$font-stack;
+
+  .title {
+    text-align: center;
+    font-size: vars.$font-size-base * 1.75;
+    margin-bottom: vars.$margin-ten * 2.4;
+    color: vars.$accent;
+  }
+
+  .todo-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 10px 16px;
+      margin-bottom: 8px;
+      border-radius: vars.$border-radius;
+      background-color: vars.$bg-white;
+      transition: background-color 0.3s ease;
+
+      &.completed {
+        background-color: vars.$bg-light;
+        color: #155724;
+        font-weight: 500;
+      }
+    }
+  }
+}

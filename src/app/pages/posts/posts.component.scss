@@ -1,0 +1,138 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/animation' as *;
+@use '../../scss-components/breakpoints' as resp;
+
+#posts-section {
+  @include mix.flex(column, center, center);
+  max-width: vars.$max-content-width;
+  padding: vars.$padding-ten * 3.2 vars.$padding-ten * 1.6;
+  margin: 0 auto;
+  text-align: center;
+
+  .title {
+    font-size: vars.$font-size-base * 2;
+    font-weight: 700;
+    margin-bottom: vars.$margin-ten * 2.4;
+    color: vars.$accent;
+  }
+
+  .small {
+    font-size: vars.$font-size-base * 0.9;
+    color: vars.$text-muted;
+    margin-bottom: vars.$margin-ten * 1.6;
+  }
+
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: vars.$margin-ten * 2.4;
+    border-radius: vars.$border-radius;
+    box-shadow: vars.$box-shadow;
+    background-color: vars.$bg-white;
+
+    padding-bottom: vars.$padding-ten * 0.4;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: vars.$border-color;
+      border-radius: vars.$border-radius;
+    }
+  }
+
+  .table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background-color: vars.$bg-white;
+    border-radius: vars.$border-radius;
+    overflow: hidden;
+
+    th,
+    td {
+      padding: vars.$padding-ten * 1.2 vars.$padding-ten * 1.6;
+      text-align: left;
+      border-bottom: 1px solid vars.$border-color;
+      font-family: vars.$font-stack;
+    }
+
+    thead {
+      background-color: vars.$accent;
+      color: vars.$bg-white;
+      text-transform: uppercase;
+      font-size: vars.$font-size-base * 0.9;
+      letter-spacing: 0.8px;
+    }
+
+    tbody tr {
+      transition: background-color vars.$transition-duration
+        vars.$transition-ease;
+
+      &:hover {
+        background-color: vars.$bg-light;
+      }
+    }
+  }
+
+  .btn {
+    padding: vars.$padding-ten * 0.6 vars.$padding-ten * 1.4;
+    border-radius: vars.$border-radius;
+    background-color: vars.$bg-white;
+    color: vars.$accent;
+    border: 1px solid vars.$accent;
+    font-family: vars.$font-stack;
+    font-weight: 500;
+    box-shadow: vars.$box-shadow;
+    transition:
+      transform vars.$transition-duration vars.$transition-ease,
+      background-color vars.$transition-duration vars.$transition-ease,
+      color vars.$transition-duration vars.$transition-ease;
+
+    &:hover {
+      transform: scale(vars.$hover-scale);
+      background-color: vars.$accent;
+      color: vars.$bg-white;
+    }
+
+    &:focus {
+      outline: vars.$focus-outline;
+      outline-offset: 2px;
+    }
+
+    &.btn-outline-info {
+      background-color: transparent;
+      border-color: vars.$accent;
+      color: vars.$accent;
+
+      &:hover {
+        background-color: vars.$accent;
+        color: vars.$bg-white;
+      }
+    }
+  }
+
+  app-modal {
+    max-width: 600px;
+    margin: auto;
+    width: 90%;
+
+    @include resp.respond("xl") {
+      width: 50%;
+    }
+  }
+
+  @include resp.respond("sm") {
+    .title {
+      font-size: vars.$font-size-base * 1.5;
+    }
+
+    .table th,
+    .table td {
+      padding: vars.$padding-ten;
+      font-size: vars.$font-size-base * 0.9;
+    }
+  }
+
+}

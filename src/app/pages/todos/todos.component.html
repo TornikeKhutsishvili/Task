@@ -1,0 +1,30 @@
+<section id="todos-section">
+  <h2 class="title">User Todos</h2>
+
+  @if (selectedUser()) {
+    <div class="user-info mb-3">
+      <h4>This is {{ selectedUser()?.username }}’s Todo list</h4>
+      <p>
+        <strong>ID:</strong> {{ selectedUser()?.id }} |
+        <strong>Username:</strong> {{ selectedUser()?.username }} |
+        <strong>Address:</strong>
+        {{ $any(selectedUser()).address?.street }}, {{ $any(selectedUser()).address?.city }} |
+        <strong>Company:</strong> {{ selectedUser()?.company?.name }}
+      </p>
+    </div>
+  }
+
+  @if (loading()) {
+    <p class="small">Loading todos...</p>
+  } @else if (todos().length === 0) {
+    <p class="small">No todos found.</p>
+  } @else {
+    <ul class="todo-list">
+      @for (todo of todos(); track todo.id) {
+        <li [class.completed]="todo.completed">
+          {{ todo.title }}
+        </li>
+      }
+    </ul>
+  }
+</section>

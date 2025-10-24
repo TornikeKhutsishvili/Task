@@ -1,0 +1,80 @@
+@use '../../../scss-components/variables' as vars;
+@use '../../../scss-components/mixins' as mix;
+@use '../../../scss-components/animation' as *;
+@use '../../../scss-components/breakpoints' as resp;
+
+#posts-section {
+  @include mix.flex(column, center, center);
+  max-width: vars.$max-content-width;
+  margin: 0 auto;
+  padding: vars.$padding-ten * 3.2 vars.$padding-ten * 1.6;
+  text-align: center;
+
+  .posts-section-main {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    width: 100%;
+
+    @include resp.respond("xxl") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include resp.respond("xl-lg") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include resp.respond("sm-lg") {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .title {
+    font-size: vars.$font-size-base * 2;
+    font-weight: 700;
+    margin-bottom: vars.$margin-ten * 2.4;
+    color: vars.$accent;
+  }
+
+  .small {
+    font-size: vars.$font-size-base * 0.9;
+    color: vars.$text-muted;
+    margin-bottom: vars.$margin-ten * 1.6;
+  }
+
+  .card {
+    background: vars.$bg-white;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$border-radius;
+    box-shadow: vars.$box-shadow;
+    padding: vars.$padding-ten * 2.4;
+    text-align: left;
+    transition: all vars.$transition-duration vars.$transition-ease;
+
+    h3 {
+      font-size: vars.$font-size-base * 1.25;
+      font-weight: 600;
+      color: vars.$text-dark;
+      margin-bottom: vars.$margin-ten * 1.2;
+    }
+
+    p {
+      color: vars.$text-muted;
+      font-size: vars.$font-size-base * 0.95;
+      line-height: 1.5;
+      margin-bottom: vars.$margin-ten * 1.6;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .flex {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+}

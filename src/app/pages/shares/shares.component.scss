@@ -1,0 +1,22 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/breakpoints' as resp;
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+  justify-content: center;
+  margin: 0 auto;
+
+  @include resp.respond("md") {
+    gap: 24px;
+  }
+
+  app-wheel, app-leaderboard {
+    background: vars.$bg-white;
+    border-radius: vars.$border-radius * 1.5;
+  }
+
+}

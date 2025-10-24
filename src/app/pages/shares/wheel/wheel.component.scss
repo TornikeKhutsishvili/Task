@@ -1,0 +1,101 @@
+@use '../../../scss-components/variables' as vars;
+@use '../../../scss-components/mixins' as mix;
+@use '../../../scss-components/breakpoints' as resp;
+
+.wheel-container {
+  text-align: center;
+  margin: 0 auto;
+
+  h2 {
+    margin-bottom: vars.$margin-ten * 2;
+    color: vars.$accent;
+  }
+
+  .wheel-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .wheel {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid vars.$accent;
+    position: relative;
+    transition: transform 4s cubic-bezier(0.25, 1, 0.5, 1.2);
+    overflow: hidden;
+
+    .sector {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0% 0%;
+      border: 1px solid vars.$accent;
+
+      @include mix.flex-center;
+      font-weight: bold;
+      color: vars.$accent;
+      border-radius: 7%;
+      border-right: none;
+      border-bottom: none;
+
+      &.active {
+        color: rgb(0, 250, 0);
+      }
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: vars.$font-size-base * 1.5;
+    color: vars.$accent;
+  }
+
+  .controls {
+    margin-top: vars.$margin-ten * 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    input {
+      padding: vars.$padding-ten * 0.8;
+      border: 1px solid vars.$accent;
+      border-radius: vars.$border-radius;
+      text-align: center;
+      width: 220px;
+    }
+
+    button {
+      padding: vars.$padding-ten * 0.8 vars.$padding-ten * 2;
+      background-color: vars.$accent;
+      color: vars.$bg-white;
+      border: none;
+      border-radius: vars.$border-radius;
+      cursor: pointer;
+      transition: background-color vars.$transition-duration vars.$transition-ease,
+                  transform vars.$transition-duration vars.$transition-ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    margin-top: vars.$margin-ten;
+    font-weight: bold;
+  }
+
+}

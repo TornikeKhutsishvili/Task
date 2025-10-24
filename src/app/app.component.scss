@@ -1,0 +1,10 @@
+@use './scss-components/variables' as vars;
+@use './scss-components/mixins' as mix;
+@use './scss-components/animation' as anim;
+@use './scss-components/breakpoints' as resp;
+
+.main-area {
+  min-height: calc(50vh + 89px);
+  height: 100%;
+  margin-inline: auto;
+}

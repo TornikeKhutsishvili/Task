@@ -1,0 +1,38 @@
+<nav class="nav navbar">
+  <ul class="nav-list list-unstyled d-flex gap-2 m-0 p-0">
+
+    <li class="nav-item">
+      <a
+        [routerLink]="['/users']"
+        [routerLinkActive]="['active']"
+        class="btn secondary"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >Users
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="btn"
+        [routerLink]="['/posts']"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >Posts
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="btn"
+        [routerLink]="['/shares']"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >shares
+      </a>
+    </li>
+
+  </ul>
+</nav>

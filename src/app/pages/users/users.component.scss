@@ -1,0 +1,188 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/animation' as *;
+@use '../../scss-components/breakpoints' as resp;
+
+#users-section {
+  @include mix.flex(column, center, center);
+  max-width: vars.$max-content-width;
+  margin: 0 auto;
+  padding: vars.$padding-ten * 3.2 vars.$padding-ten * 1.6;
+  font-family: vars.$font-stack;
+  background-color: vars.$bg;
+
+  .title {
+    font-size: vars.$font-size-base * 2;
+    font-weight: 700;
+    color: vars.$accent;
+    margin-bottom: vars.$margin-ten * 2.4;
+    text-align: center;
+  }
+
+  .search-container {
+    width: 100%;
+    margin-bottom: vars.$margin-ten * 2.4;
+    @include mix.flex-center;
+
+    .form-control {
+      width: 100%;
+      max-width: 500px;
+      padding: vars.$padding-ten vars.$padding-ten * 1.6;
+      border: 1px solid vars.$border-color;
+      border-radius: vars.$border-radius;
+      font-size: vars.$font-size-base;
+      font-family: vars.$font-stack;
+      color: vars.$text-primary;
+      box-shadow: vars.$box-shadow;
+      transition: all vars.$transition-duration vars.$transition-ease;
+
+      &:focus {
+        border-color: vars.$accent;
+        outline: vars.$focus-outline;
+      }
+
+      &::placeholder {
+        color: vars.$muted;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .small {
+    color: vars.$muted;
+    font-size: vars.$font-size-base * 0.85;
+    margin-bottom: vars.$margin-ten * 1.6;
+  }
+
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: vars.$margin-ten * 2.4;
+    border-radius: vars.$border-radius;
+    box-shadow: vars.$box-shadow;
+    background-color: vars.$bg-white;
+    padding-bottom: vars.$padding-ten * 0.4;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: vars.$border-color;
+      border-radius: vars.$border-radius;
+    }
+  }
+
+  .table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    background-color: vars.$bg-white;
+    border-radius: vars.$border-radius;
+    overflow: hidden;
+    animation: fadeIn vars.$transition-duration vars.$transition-ease;
+
+    thead {
+      background-color: vars.$accent;
+      color: vars.$bg-white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: vars.$font-size-base * 0.9;
+    }
+
+    th,
+    td {
+      padding: vars.$padding-ten * 1.4 vars.$padding-ten * 1.6;
+      text-align: left;
+      border-bottom: 1px solid vars.$border-color;
+      vertical-align: middle;
+    }
+
+    tbody tr {
+      transition: background-color vars.$transition-duration vars.$transition-ease;
+
+      &:hover {
+        background-color: vars.$bg-light;
+      }
+    }
+
+    td {
+      color: vars.$text-primary;
+      font-size: vars.$font-size-base * 0.95;
+      word-break: break-word;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 120px;
+    }
+  }
+
+  .btn {
+    padding: vars.$padding-ten * 0.6 vars.$padding-ten * 1.2;
+    border-radius: vars.$border-radius;
+    background-color: vars.$bg-white;
+    color: vars.$accent;
+    border: 1px solid vars.$accent;
+    font-family: vars.$font-stack;
+    font-weight: 500;
+    box-shadow: vars.$box-shadow;
+    transition:
+      transform vars.$transition-duration vars.$transition-ease,
+      background-color vars.$transition-duration vars.$transition-ease,
+      color vars.$transition-duration vars.$transition-ease;
+
+    &:hover {
+      transform: scale(vars.$hover-scale);
+      background-color: vars.$accent;
+      color: vars.$bg-white;
+    }
+
+    &:focus {
+      outline: vars.$focus-outline;
+      outline-offset: 2px;
+    }
+
+    &.btn-outline-info {
+      background-color: transparent;
+      border-color: vars.$accent;
+      color: vars.$accent;
+
+      &:hover {
+        background-color: vars.$accent;
+        color: vars.$bg-white;
+      }
+    }
+
+    &.btn-outline-success {
+      background-color: transparent;
+      border-color: vars.$success;
+      color: vars.$success;
+
+      &:hover {
+        background-color: vars.$success;
+        color: vars.$bg-white;
+      }
+    }
+  }
+
+  @include resp.respond("sm") {
+    .title {
+      font-size: vars.$font-size-base * 1.5;
+    }
+
+    .table th,
+    .table td {
+      padding: 10px;
+      font-size: vars.$font-size-base * 0.9;
+    }
+
+    .action-buttons {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 6px;
+    }
+  }
+
+}

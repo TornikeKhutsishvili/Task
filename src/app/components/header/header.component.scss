@@ -1,0 +1,34 @@
+@use '../../scss-components/variables' as vars;
+@use '../../scss-components/mixins' as mix;
+@use '../../scss-components/breakpoints' as resp;
+
+.site-header {
+  width: 100%;
+  background-color: vars.$bg-white;
+  border-bottom: 1px solid vars.$bg;
+
+  .top-nav {
+    @include mix.flex(row, space-between, end);
+    padding: vars.$padding-ten * 1.6 vars.$padding-ten;
+    max-width: vars.$max-content-width;
+
+    .logo {
+      font-weight: 700;
+      text-decoration: none;
+      color: vars.$accent;
+    }
+
+    .small {
+      font-size: 15px;
+      color: vars.$muted;
+    }
+  }
+
+  .bottom-nav {
+    @include mix.flex(row, space-between, center);
+    padding: vars.$padding-ten * 1.6 vars.$padding-ten;
+    max-width: vars.$max-content-width;
+    margin: 0 auto;
+  }
+
+}

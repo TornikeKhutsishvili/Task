@@ -1,0 +1,35 @@
+<div class="wheel-container my-5">
+  <h2>🎯 Wheel Game</h2>
+
+  <div class="wheel-wrapper">
+    <div #wheel
+      class="wheel"
+      [style.transform]="rotationStyle()"
+      [class.spinning]="isSpinning()"
+    >
+      @for (s of [].constructor(sectorCount()); track $index) {
+        <div class="sector"
+          [style.transform]="'rotate(' + ($index * (360 / sectorCount()) + 225) + 'deg)'"
+          [class.active]="activeSector() === $index + 1"
+        >{{ $index + 1 }}</div>
+      }
+    </div>
+    <div class="indicator" #indicator>▼</div>
+  </div>
+
+  <div class="controls">
+    <input type="number"
+          placeholder="Enter number of sector"
+          [(ngModel)]="inputValue"
+          [disabled]="isSpinning()"
+    />
+    <button type="button"
+      (click)="spinWheel()"
+      [disabled]="isSpinning()"
+    >
+      spin 🎡
+    </button>
+  </div>
+
+  @if (error()) { <p class="error">{{ error() }}</p> }
+</div>

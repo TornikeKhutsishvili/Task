@@ -1,0 +1,15 @@
+@use './variables' as vars;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-family: vars.$font-stack;
+  background-color: vars.$bg;
+  color: vars.$text-primary;
+  line-height: 1.6;
+}
